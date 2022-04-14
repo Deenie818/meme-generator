@@ -2,13 +2,13 @@
 var searchButton = document.querySelector(".searchbutton");
 var nextButton = document.querySelector(".next");
 var inputEl = document.querySelector("input");
-var dogResult = document.querySelector("#dog-result");
+// var dogResult = document.querySelector("#dog-result");
 var galleryEl = document.querySelector(".gallery")
 var searchFormEl = document.querySelector("#user-form")
 
-var pagenr = 1;
-var search = false;
-var query = "";
+// var pagenr = 1;
+// var search = false;
+// var query = "";
 
 // input.addEventListener("input", function(event) {
 //     event.preventDefault();
