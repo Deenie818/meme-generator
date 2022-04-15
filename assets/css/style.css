@@ -9,8 +9,23 @@ body {
     overflow-x: hidden;
 }
 
+/* image {
+    object-fit: fill;
+} */
+
+.fill {
+    height: 100%;
+    width: 100%;
+}
+
+#meme-canvas {
+    height: 600px;
+    width: 400px;
+    border: 1px solid;
+}
+
 .search {
-    position: fixed;
+    /* position: fixed; */
     top: 0;
     left: 0;
     width: 100%;
@@ -71,3 +86,16 @@ img {
     object-fit: scale-down;
     object-position: center;
 }
+
+ .hold {
+     border: solid #ccc 4px;
+ }
+
+ .hovered {
+     background: #f4f4f4;
+     border-style: dashed;
+ }
+
+ .invisible {
+     display: none;
+ }

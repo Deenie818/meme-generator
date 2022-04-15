@@ -1,10 +1,11 @@
 // var requestUrl = "https://www.flickr.com/services/feeds/photos_public.gne";
 var searchButton = document.querySelector(".searchbutton");
 var nextButton = document.querySelector(".next");
-var inputEl = document.querySelector("input");
+var inputEl = document.querySelector("#search-form");
 // var dogResult = document.querySelector("#dog-result");
 var galleryEl = document.querySelector(".gallery")
 var searchFormEl = document.querySelector("#user-form")
+var canvasEl = document.querySelector(".empty")
 
 // var pagenr = 1;
 // var search = false;
@@ -33,11 +34,43 @@ var getPhotos = function(search) {
             for (var i =0; i < 60; i+= 2) {
 
             var picSearchEl = document.createElement("div");
+            picSearchEl.setAttribute("class", "fill");
             
             picSearchEl.innerHTML = `<img src="${data.results[i]}"/>`
 
             galleryEl.appendChild(picSearchEl);
 
+            picSearchEl.addEventListener('dragstart', dragStart);
+            picSearchEl.addEventListener('dragend', dragEnd);
+
+            canvasEl.addEventListener("dragover", dragOver);
+            canvasEl.addEventListener("dragenter", dragEnter);
+            canvasEl.addEventListener("dragleave", dragLeave);
+            canvasEl.addEventListener("drop", dragDrop);
+
+            var dragOver = function(e) {
+                e.preventDefault();
+                console.log("over");
+            }
+
+            var dragEnter = function(e) {
+                e.preventDefault();
+                this.className += ' hovered';
+
+                console.log("enter");
+            }
+
+            var dragLeave = function() {
+                this.className = "empty";
+                console.log("leave");
+            }
+
+            var dragDrop  = function() {
+                this.className = "empty";
+                var picResult = document.querySelector(".fill")
+                this.appendChild(picResult);
+                console.log("drop");
+            }
             
 
             };
@@ -51,6 +84,16 @@ var getPhotos = function(search) {
     });
     
 };
+
+var dragStart = function() {
+    console.log("start");
+    this.className += " hold";
+    setTimeout(() => this.className = "invisible", 0);
+}
+
+var dragEnd = function() {
+    this.className = "fill";
+}
 
 
 var searchInputHandler = function (event) {
@@ -69,6 +112,19 @@ var searchInputHandler = function (event) {
         alert('Please enter a search term');
       }
 }
+
+
+
+
+
+// var dragDrop = function() {
+//     var picResult = document.querySelector(".fill")
+//     canvasEl.appendChild(picResult);
+
+// }
+
+// canvasEl.addEventListener("drop", dragDrop);
+
 
 var clearQueue = function() {
     // inputEl.value = "";
