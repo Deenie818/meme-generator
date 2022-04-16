@@ -20,3 +20,22 @@
     width: 100%;
   }
   
+  #heading {
+    color: white;
+    text-align: center;
+    background-color: blue;
+    padding-top: 35px
+    
+  }
+
+  .links {
+    color: white;
+    padding-right: 30px;
+    display: inline;
+   
+
+  }
+
+  .background {
+    color-scheme: light blue;
+  }
