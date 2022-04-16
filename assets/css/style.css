@@ -80,10 +80,10 @@ input {
 }
 
 img {
-    margin-left: 5px;
+    /* margin-left: 5px; */
     height: 300px;
     width: 200px;
-    object-fit: scale-down;
+    /* object-fit: scale-down; */
     object-position: center;
 }
 
@@ -98,4 +98,9 @@ img {
 
  .invisible {
      display: none;
+ }
+
+ #pic-choice {
+     height: 600px;
+     width: 400px;
  }

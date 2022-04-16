@@ -35,6 +35,7 @@ var getPhotos = function(search) {
 
             var picSearchEl = document.createElement("div");
             picSearchEl.setAttribute("class", "fill");
+            picSearchEl.setAttribute("id", i.toString());
             
             picSearchEl.innerHTML = `<img src="${data.results[i]}"/>`
 
@@ -68,7 +69,12 @@ var getPhotos = function(search) {
             var dragDrop  = function() {
                 this.className = "empty";
                 var picResult = document.querySelector(".fill")
+                
+
+                var picChoice = picResult.querySelector("img");
+                // picChoice.id = ("pic-choice");
                 this.appendChild(picResult);
+                
                 console.log("drop");
             }
             
