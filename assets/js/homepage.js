@@ -68,11 +68,14 @@ var getPhotos = function(search) {
 
             var dragDrop  = function() {
                 this.className = "empty";
-                var picResult = document.querySelector(".fill")
+                //var x = event.currenttarget.id
+                // var picResult = document.querySelector("[id = x")
+                var picResult = document.querySelector("[id = '2']")
+
                 
 
                 var picChoice = picResult.querySelector("img");
-                // picChoice.id = ("pic-choice");
+                picChoice.id = ("pic-choice");
                 this.appendChild(picResult);
                 
                 console.log("drop");
