@@ -23,7 +23,8 @@
   #heading {
     color: white;
     text-align: center;
-    background-color: blue;
+    background-color: rgb(36, 80, 95);
+    background-image: linear-gradient(blue, lightblue, lightgreen);
     padding-top: 35px
     
   }
@@ -36,6 +37,4 @@
 
   }
 
-  .background {
-    color-scheme: light blue;
-  }
+  
