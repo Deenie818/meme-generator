@@ -1,0 +1,14 @@
+.image {
+    margin: 50px;
+    border: 50px;
+    padding: 50px;
+    border: 1px green;
+}
+
+h1 {
+    margin: 25px;
+}
+
+div {
+    display: flex;
+}
