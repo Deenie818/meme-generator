@@ -5,27 +5,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meme Generator</title>
-    <link rel="stylesheet" href="meme-generator.css">
-    <a href="./my-memes.html">My Memes</a><br />
+    <link rel="stylesheet" href="./assets/css/style.css">
+    
+    <header id="heading">
+        <a href="my-memes.html">My Memes</a><br />
+        <h1>Welcome To The World's Best Meme Generator!</h1>
+        <nav>
+            <a href=""class="links">Home</a>
+            <a href=""class="links">About</a>
+            <a href=""class="links">Gallery</a>
+            <a href=""class="links">Contact</a>
+          </nav>
+    </header>
 </head>
 
 <body>
-    <p>
-        <textarea id="top-text"></textarea>
-    </p>
-    <p>
-        <textarea id="bottom-text"></textarea>
-    </p>
-    <p>
-        <input type="file" id="image-input" accept="image/*">
-    </p>
-    <p>
-        <button id="generate-btn">Generate!</button>
-    </p>
-    <p>
-        <canvas id="meme-canvas"></canvas>
-    </p>
-    <script src="meme-generator.js"></script>
+    <div class="meme-generator">
+        <form id= form enctype="multipart/form-data">
+        <label>Select an Image</label>
+        <input type="file" id="imageFileInput">
+      
+        <label>Top Text</label>
+        <input type="text" id="topTextInput">
+      
+        <label>Bottom Text</label>
+        <input type="text" id="bottomTextInput">
+
+        <button id="generateBtn" class="btn">Generate</button>
+
+        <canvas id="meme"></canvas>
+        </form>
+      </div>
+
+      <div id="display-image"></div>
+   
+      
+
+      <script src="./assets/js/homepage.js"></script>
+      <script src="./assets/js/my-memes.js"></script>
 </body>
 
 </html>

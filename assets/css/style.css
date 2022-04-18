@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box
+}
+
+
+h1 {
+    margin: 25px;
+    float: center;
+}
+
+/*
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 5px;
+}
+
+.row::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+*/
+
+div {
+    display: flex;
+}
