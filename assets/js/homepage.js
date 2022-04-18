@@ -7,6 +7,8 @@ var galleryEl = document.querySelector(".gallery")
 var searchFormEl = document.querySelector("#user-form")
 var canvasEl = document.querySelector(".empty")
 
+var dragPic = "";
+console.log(dragPic);
 // var pagenr = 1;
 // var search = false;
 // var query = "";
@@ -49,36 +51,62 @@ var getPhotos = function(search) {
             canvasEl.addEventListener("dragleave", dragLeave);
             canvasEl.addEventListener("drop", dragDrop);
 
+            var dragStart = function(event) {
+                // console.log(event.currentTarget.id); id = correct index number!
+                dragPic = event.currentTarget.id;
+                console.log(dragPic);
+                // dragPic.push(dragPic);
+                this.className += " hold";
+                setTimeout(() => this.className = "invisible", 0);
+                console.log("start");
+            }
+
             var dragOver = function(e) {
+                // console.log(e.currentTarget.id); id = meme-canvas
                 e.preventDefault();
                 console.log("over");
             }
 
             var dragEnter = function(e) {
+                // console.log(e.currentTarget.id); id = meme-canvas
                 e.preventDefault();
                 this.className += ' hovered';
 
                 console.log("enter");
             }
 
-            var dragLeave = function() {
+            var dragLeave = function(e) {
+                // console.log(e.currentTarget.id); id = meme-canvas
                 this.className = "empty";
                 console.log("leave");
             }
 
-            var dragDrop  = function() {
+            var dragDrop  = function(event) {
                 this.className = "empty";
-                //var x = event.currenttarget.id
-                // var picResult = document.querySelector("[id = x")
-                var picResult = document.querySelector("[id = '2']")
+                // console.log(e.currentTarget.id); id = meme-canvas
+                // var dragPic = event.currentTarget.id;
+                // var picResult = document.querySelector(dragPic)
+                // var picDrop = dragPic
+                console.log(dragPic);
+                
+                var picResult = document.getElementById(dragPic);
 
                 
 
                 var picChoice = picResult.querySelector("img");
                 picChoice.id = ("pic-choice");
+                
                 this.appendChild(picResult);
                 
                 console.log("drop");
+
+            }
+
+            var dragEnd = function() {
+                this.className = "fill";
+                console.log("end");
+
+                // copyImageToCanvas();
             }
             
 
@@ -94,15 +122,9 @@ var getPhotos = function(search) {
     
 };
 
-var dragStart = function() {
-    console.log("start");
-    this.className += " hold";
-    setTimeout(() => this.className = "invisible", 0);
-}
 
-var dragEnd = function() {
-    this.className = "fill";
-}
+
+
 
 
 var searchInputHandler = function (event) {
@@ -139,6 +161,53 @@ var clearQueue = function() {
     // inputEl.value = "";
     document.querySelector(".gallery").innerHTML = "";
 }
+
+
+
+// var copyImageToCanvas = function() {
+//     var picResult = document.getElementById(dragPic);
+//     var image = picResult.querySelector("img");
+//     var canvas = document.querySelector("canvas");
+
+//     var ctx = canvas.getContext("2d");
+
+//     ctx.drawImage(image, 0, 0)
+// }
+
+
+var drawText = function() {
+
+        if (canvasEl.firstChild) {
+        
+            
+        var topText = document.getElementById("topTextInput").value
+        console.log(topText);
+
+        var TopEl = document.createElement("div");
+        TopEl.setAttribute("id", "top-text")
+        TopEl.innerText = topText
+        
+        
+        canvasEl.appendChild(TopEl);
+
+        var bottomText = document.getElementById("bottomTextInput").value
+
+        var bottomEl = document.createElement("div");
+        bottomEl.setAttribute("id", "bottom-text")
+        bottomEl.innerText = bottomText
+
+        canvasEl.appendChild(bottomEl);
+
+    }
+
+}
+
+
+
+topTextInput.addEventListener("change", drawText);
+bottomTextInput.addEventListener("change", drawText);
+
+
 
 searchFormEl.addEventListener("submit", searchInputHandler);
 
