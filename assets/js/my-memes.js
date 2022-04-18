@@ -1,4 +1,4 @@
-// JAVASCRIPT NO JQUERY VVVVVVVVV
+// 1st
 
 //var form = document.getElementById('form')
 
@@ -40,23 +40,9 @@
 //showImages()
 
 
-//JQUERY
+//2nd
 
-//
-const imageFileInput = document.querySelector("#imageFileInput");
-var uploadedImage = "";
-
-// myBtn is now equal to it's button id
-//const myBtn = document.getElementById("generateBtn")
-
-imageFileInput.addEventListener("change", function() {
-    const reader = new FileReader();
-    reader.addEventListener("load", () => {
-        uploadedImage = reader.result;
-        document.querySelector("#display-image").style.backgroundImage = 'url(${uploadedImage})'
-    });
-    reader.readDataUrl(this.files[0]);
-})
+//3rd
 
 //at the click of the button we can now be ready to generate button
 //myBtn.addEventListener("click", function() {
@@ -86,3 +72,27 @@ imageFileInput.addEventListener("change", function() {
 
 //});
 
+let memes = [];
+
+const addMeme = (ev)=>{
+    // stop the form from submitting
+    ev.preventDefault();
+    let meme = {
+        imageFileInput: document.getElementById('imageFileInput').value,
+        topTextInput: document.getElementById('topTextInput').value,
+        bottomTextInput: document.getElementById('bottomTextInput').value
+    }
+    memes.push(meme);
+    // this clears the form
+    document.forms[0].reset();
+
+    //so the meme is then displayed
+    console.warn('added',{memes} );
+    
+}
+
+// saving to localStorage
+
+document.addEventListener('DOMContentLoaded', ()=>{
+    document.getElementById('generateBtn').addEventListener('click', addMeme);
+});
