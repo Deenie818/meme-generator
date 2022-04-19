@@ -7,6 +7,8 @@ var galleryEl = document.querySelector(".gallery")
 var searchFormEl = document.querySelector("#user-form")
 var canvasEl = document.querySelector(".empty")
 
+var generateBtn = document.querySelector("#generate");
+
 var dragPic = "";
 console.log(dragPic);
 // var pagenr = 1;
@@ -31,30 +33,13 @@ var getPhotos = function(search) {
     
     fetch("https://cors-anywhere.herokuapp.com/https://imsea.herokuapp.com/api/1?q=" + search).then(function(response){
         response.json().then(function(data){
-            console.log(data);  
-
-            for (var i =0; i < 60; i+= 2) {
-
-            var picSearchEl = document.createElement("div");
-            picSearchEl.setAttribute("class", "fill");
-            picSearchEl.setAttribute("id", i.toString());
-            
-            picSearchEl.innerHTML = `<img src="${data.results[i]}"/>`
-
-            galleryEl.appendChild(picSearchEl);
-
-            picSearchEl.addEventListener('dragstart', dragStart);
-            picSearchEl.addEventListener('dragend', dragEnd);
-
-            canvasEl.addEventListener("dragover", dragOver);
-            canvasEl.addEventListener("dragenter", dragEnter);
-            canvasEl.addEventListener("dragleave", dragLeave);
-            canvasEl.addEventListener("drop", dragDrop);
+            console.log(data);
 
             var dragStart = function(event) {
                 // console.log(event.currentTarget.id); id = correct index number!
-                dragPic = event.currentTarget.id;
+                dragPic = event.currentTarget.id.toString();
                 console.log(dragPic);
+                console.log(typeof dragPic)
                 // dragPic.push(dragPic);
                 this.className += " hold";
                 setTimeout(() => this.className = "invisible", 0);
@@ -108,11 +93,25 @@ var getPhotos = function(search) {
 
                 // copyImageToCanvas();
             }
-            
 
-            };
+            for (var i =0; i < 60; i+= 2) {
+                
+                var picSearchEl = document.createElement("div");
+                picSearchEl.setAttribute("class", "fill");
+                picSearchEl.setAttribute("id", i.toString());
+                
+                picSearchEl.innerHTML = `<img src="${data.results[i]}"/>`
 
-            
+                galleryEl.appendChild(picSearchEl);
+
+                picSearchEl.addEventListener('dragstart', dragStart);
+                picSearchEl.addEventListener('dragend', dragEnd);
+            }
+
+            canvasEl.addEventListener("dragover", dragOver);
+            canvasEl.addEventListener("dragenter", dragEnter);
+            canvasEl.addEventListener("dragleave", dragLeave);
+            canvasEl.addEventListener("drop", dragDrop);
 
             // dogResult.innerHTML = `<img src="${data.results[5]}"/>`
         });
@@ -202,6 +201,23 @@ var drawText = function() {
 
 }
 
+
+// DOESN'T WORK, ONLY COPIES ONE DIV WITH TEXT
+// var createCanvas = function() {
+//     console.log("new canvas here")
+//     html2canvas(document.querySelector("#meme-canvas")).then(canvas => {
+//         document.body.appendChild(canvas)
+//     });
+// }
+
+// generateBtn.addEventListener("click", createCanvas)
+
+
+// var saveMeme = function() {
+//     localStorage.setItem("meme", canvasEl.outerHTML);
+// }
+
+// generateBtn.addEventListener("click", saveMeme);
 
 
 topTextInput.addEventListener("change", drawText);
