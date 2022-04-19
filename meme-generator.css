@@ -1,40 +1,38 @@
 .meme-generator {
-    margin: 20px auto;
-    width: 400px;
-    font-family: sans-serif;
-  }
-  
-  .meme-generator label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .meme-generator input {
-    width: 100%;
-    box-sizing: border-box;
-    margin-bottom: 20px;
-  }
-  
-  #meme {
-    width: 100%;
-  }
-  
-  #heading {
-    color: white;
-    text-align: center;
-    background-color: rgb(36, 80, 95);
-    background-image: linear-gradient(blue, lightblue, lightgreen);
-    padding-top: 35px
-    
-  }
+  margin: 20px auto;
+  width: 400px;
+  font-family: sans-serif;
+}
 
-  .links {
-    color: white;
-    padding-right: 30px;
-    display: inline;
-   
+.meme-generator label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
 
-  }
+.meme-generator input {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
 
-  
+#meme {
+  width: 100%;
+}
+
+#heading {
+  color: white;
+  text-shadow: 2px 2px black;
+  text-align: center;
+  background-color: rgb(36, 80, 95);
+  background-image: linear-gradient(blue, lightblue, lightgreen);
+  padding-top: 35px
+}
+
+.links {
+  color: white;
+  padding-right: 30px;
+  display: inline;
+
+
+}
