@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="meme-generator.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="meme-generator">
+        <label>Select an Image</label>
+        <input type="file" id="imageFileInput">
+      
+        <label>Top Text</label>
+        <input type="text" id="topTextInput">
+      
+        <label>Bottom Text</label>
+        <input type="text" id="bottomTextInput">
+      
+        <canvas id="meme"></canvas>
+
+        <div id="meme-canvas" class="empty"></div>
+
+        <button id="generate">Generate</button>
+
+        <img src="" id="imgConverted" alt="">
+    </div>
+        
+
+
+    <form id="user-form" class="search">
+        <input type="text" name="" id="search-form">
+        <button type="submit" class="searchbutton">Search</button>
+    </form>
+
+    <div class="gallery">
+        <!-- <div id="dog-result"></div> -->
+    </div>
+    <!-- <div class="next">Next Page</div> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>   
+<script src="./assets/js/homepage.js"></script>
+<script src="./meme-generator.js"></script>
+</body>
+</html>
