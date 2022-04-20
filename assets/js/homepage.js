@@ -229,7 +229,7 @@ var saveCanvas = function() {
     // localStorage.setItem(canvas, canvas.toDataURL());
     // console.log(dataURI);
 
-    imgConverted.src = dataURI;
+    // abby1.src = dataURI;
 
     localStorage.setItem("meme", dataURI);
 
@@ -249,7 +249,7 @@ if (savedMeme) {
 
 
 
-    imgConverted.setAttribute("src", savedMeme);
+    abby1.setAttribute("src", savedMeme);
 }
 // var saveImage = function() {
     

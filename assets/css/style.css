@@ -40,7 +40,7 @@ input {
     font-size: 1rem;
 }
 
-.searchbutton {
+.button {
     padding: 0.5rem 3rem;
     margin-left: 10px;
     background: blue;
@@ -115,6 +115,7 @@ img {
 
 
  #meme-canvas {
+    margin-top: 20px;
     position: relative;
     height: 600px;
     width: 400px;
@@ -154,4 +155,19 @@ img {
     
     /* z-index: 9; */
 
+}
+
+input[type="file"] {
+    display: none;
+}
+
+#choose {
+    font-weight: normal;
+    margin-left: 0;
+}
+
+#generate {
+    margin-left: 0;
+    margin-bottom: 20px;
+    
 }

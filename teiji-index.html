@@ -10,30 +10,46 @@
 </head>
 <body>
 
+    <header id="heading">
+        <h1>Welcome To The World's Best Meme Generator!</h1>
+        <nav>
+            <a href="./teiji-index.html"class="links">Home</a>
+            <a href="./my-memes.html"class="links">My Memes</a>
+            <!-- <a href="./privacy-policy.html">Read Our Privacy Policy</a> -->
+            
+          </nav>
+    </header>
+
     <div class="meme-generator">
         <label>Select an Image</label>
-        <input type="file" id="imageFileInput">
+        
+        <label id="choose" class="button">
+            <input type="file" id="imageFileInput">
+        Choose File</label>
       
         <label>Top Text</label>
         <input type="text" id="topTextInput">
       
         <label>Bottom Text</label>
         <input type="text" id="bottomTextInput">
+
+        <button id="generate" class="button">Save My Meme</button>
       
         <canvas id="meme"></canvas>
 
+
         <div id="meme-canvas" class="empty"></div>
 
-        <button id="generate">Generate</button>
+        
 
-        <img src="" id="imgConverted" alt="">
+        <!-- <img src="" id="imgConverted" alt=""> -->
     </div>
         
 
 
     <form id="user-form" class="search">
         <input type="text" name="" id="search-form">
-        <button type="submit" class="searchbutton">Search</button>
+        <button type="submit" class="button">Search</button>
     </form>
 
     <div class="gallery">
