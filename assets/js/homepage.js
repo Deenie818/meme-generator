@@ -6,6 +6,7 @@ var inputEl = document.querySelector("#search-form");
 var galleryEl = document.querySelector(".gallery")
 var searchFormEl = document.querySelector("#user-form")
 var canvasEl = document.querySelector(".empty")
+var memeGenerator = document.querySelector(".meme-generator")
 
 var generateBtn = document.querySelector("#generate");
 
@@ -218,6 +219,57 @@ var drawText = function() {
 // }
 
 // generateBtn.addEventListener("click", saveMeme);
+
+
+var saveCanvas = function() {
+    // console.log("save canvas")
+
+    var dataURI = canvas.toDataURL();
+
+    // localStorage.setItem(canvas, canvas.toDataURL());
+    // console.log(dataURI);
+
+    imgConverted.src = dataURI;
+
+    localStorage.setItem("meme", dataURI);
+
+    // saveImage();
+    
+}
+
+var savedMeme = localStorage.getItem("meme");
+
+if (savedMeme) {
+
+    var myMemes = document.createElement("img");
+
+    // myMemes.setAttribute("src", savedMeme);
+
+    // memeGenerator.appendChild(myMemes)
+
+
+
+    imgConverted.setAttribute("src", savedMeme);
+}
+// var saveImage = function() {
+    
+//         imgConverted
+    
+// };
+
+generateBtn.addEventListener("click", saveCanvas);
+
+// var dataURL = localStorage.getItem(canvas);
+
+// var img = new Image;
+// img.src = dataURL;
+
+// image.onload = function () {
+    
+
+//     ctx.drawImage(img, 0, 0);
+// };
+
 
 
 topTextInput.addEventListener("change", drawText);
