@@ -1,136 +1,153 @@
-// var requestUrl = "https://www.flickr.com/services/feeds/photos_public.gne";
-var searchButton = document.querySelector(".searchbutton");
-var nextButton = document.querySelector(".next");
-var inputEl = document.querySelector("#search-form");
-// var dogResult = document.querySelector("#dog-result");
-var galleryEl = document.querySelector(".gallery")
-var searchFormEl = document.querySelector("#user-form")
-var canvasEl = document.querySelector(".empty")
+const imageFileInput = document.querySelector("#imageFileInput");
+const canvas = document.querySelector("#meme");
+const topTextInput = document.querySelector("#topTextInput");
+const bottomTextInput = document.querySelector("#bottomTextInput");
 
-// var pagenr = 1;
-// var search = false;
-// var query = "";
+let image;
 
-// input.addEventListener("input", function(event) {
-//     event.preventDefault();
-//     query = event.target.value;
-// });
+imageFileInput.addEventListener("change", (e) => {
+  const imageDataUrl = URL.createObjectURL(e.target.files[0]);
 
-// // async function curatedPhotos (pagenr) {
-// //     var data = await fetch(requestUrl);
+  image = new Image();
+  image.src = imageDataUrl;
 
-// //     var result = await data.json();
-// //     console.log(result);
-// // }
+  image.addEventListener(
+    "load",
+    () => {
+      updateMemeCanvas(
+        canvas,
+        image,
+        topTextInput.value,
+        bottomTextInput.value
+      );
+    },
+    { once: true }
+  );
+});
 
-// // curatedPhotos(pagenr);
+topTextInput.addEventListener("change", () => {
+  updateMemeCanvas(canvas, image, topTextInput.value, bottomTextInput.value);
+});
 
-var getPhotos = function(search) {
-    
-    fetch("https://cors-anywhere.herokuapp.com/https://imsea.herokuapp.com/api/1?q=" + search).then(function(response){
-        response.json().then(function(data){
-            console.log(data);  
+bottomTextInput.addEventListener("change", () => {
+  updateMemeCanvas(canvas, image, topTextInput.value, bottomTextInput.value);
+});
 
-            for (var i =0; i < 60; i+= 2) {
+function updateMemeCanvas(canvas, image, topText, bottomText) {
+  const ctx = canvas.getContext("2d");
+  const width = image.width;
+  const height = image.height;
+  const fontSize = Math.floor(width / 10);
+  const yOffset = height / 25;
 
-            var picSearchEl = document.createElement("div");
-            picSearchEl.setAttribute("class", "fill");
-            
-            picSearchEl.innerHTML = `<img src="${data.results[i]}"/>`
+  // Update canvas background
+  canvas.width = width;
+  canvas.height = height;
+  ctx.drawImage(image, 0, 0);
 
-            galleryEl.appendChild(picSearchEl);
+  // Prepare text
+  ctx.strokeStyle = "black";
+  ctx.lineWidth = Math.floor(fontSize / 4);
+  ctx.fillStyle = "white";
+  ctx.textAlign = "center";
+  ctx.lineJoin = "round";
+  ctx.font = `${fontSize}px sans-serif`;
 
-            picSearchEl.addEventListener('dragstart', dragStart);
-            picSearchEl.addEventListener('dragend', dragEnd);
+  // Add top text
+  ctx.textBaseline = "top";
+  ctx.strokeText(topText, width / 2, yOffset);
+  ctx.fillText(topText, width / 2, yOffset);
 
-            canvasEl.addEventListener("dragover", dragOver);
-            canvasEl.addEventListener("dragenter", dragEnter);
-            canvasEl.addEventListener("dragleave", dragLeave);
-            canvasEl.addEventListener("drop", dragDrop);
-
-            var dragOver = function(e) {
-                e.preventDefault();
-                console.log("over");
-            }
-
-            var dragEnter = function(e) {
-                e.preventDefault();
-                this.className += ' hovered';
-
-                console.log("enter");
-            }
-
-            var dragLeave = function() {
-                this.className = "empty";
-                console.log("leave");
-            }
-
-            var dragDrop  = function() {
-                this.className = "empty";
-                var picResult = document.querySelector(".fill")
-                this.appendChild(picResult);
-                console.log("drop");
-            }
-            
-
-            };
-
-            
-
-            // dogResult.innerHTML = `<img src="${data.results[5]}"/>`
-        });
-
-        
-    });
-    
-};
-
-var dragStart = function() {
-    console.log("start");
-    this.className += " hold";
-    setTimeout(() => this.className = "invisible", 0);
-}
-
-var dragEnd = function() {
-    this.className = "fill";
-}
-
-
-var searchInputHandler = function (event) {
-    event.preventDefault();
-
-    clearQueue();
-    
-    var searchTerm = inputEl.value.trim();
-
-    if (searchTerm) {
-        getPhotos(searchTerm);
-
-
-        inputEl.value = "";
-    } else {
-        alert('Please enter a search term');
-      }
+  // Add bottom text
+  ctx.textBaseline = "bottom";
+  ctx.strokeText(bottomText, width / 2, height - yOffset);
+  ctx.fillText(bottomText, width / 2, height - yOffset);
 }
 
 
 
 
 
-// var dragDrop = function() {
-//     var picResult = document.querySelector(".fill")
-//     canvasEl.appendChild(picResult);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// let topTextInput, bottomTextInput, imageInput, generateBtn, canvas, ctx;
+
+// function generateMeme (img, topText, bottomText) {
+//     canvas.width = img.width;
+//     canvas.height = img.height;
+
+//     ctx.clearRect(0, 0, canvas.width, canvas.height);
+//     ctx.drawImage(img, 0, 0);
+
+//     let fontSize = canvas.width / 15;
+//     ctx.font = fontSize + 'px Impact';
+//     ctx.fillStyle = "white";
+//     ctx.strokeStyle = "black";
+//     ctx.lineWidth = fontSize / 15;
+//     ctx.textAlign = "center";
+   
+    
+//     ctx.textBaseLine = "top";
+//     ctx.fillText(topText, canvas.width / 2, 0, canvas.width);
+//     ctx.strokeText(topText, canvas.width / 2, 0, canvas.width);
 
 // }
 
-// canvasEl.addEventListener("drop", dragDrop);
+// // function init () {
+//     topTextInput = document.getElementById('top-text');
+//     bottomTextInput = document.getElementById('bottom-text');
+//     imageInput = document.getElementById('image-input');
+//     generateBtn = document.getElementById("generate-btn");
+//     canvas = document.getElementById('meme-canvas');
+
+//     ctx = canvas.getContext("2d");
+
+//     canvas.width = canvas.height = 0;
+
+//     generateBtn.addEventListener('click', function () {
+//         let reader = new FileReader();
+//         reader.onload = function () {
+//             let img = new Image;
+            
+//             img.src = reader.result;
+//             console.log(img);
+//             generateMeme(img, topTextInput.value, bottomTextInput.value);
+//         };
+
+//         reader.readAsDataURL(imageInput.files[0]);
+//     } );
 
 
-var clearQueue = function() {
-    // inputEl.value = "";
-    document.querySelector(".gallery").innerHTML = "";
-}
 
-searchFormEl.addEventListener("submit", searchInputHandler);
+// // }
 
-// getPhotos();
+// // init();

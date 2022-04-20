@@ -5,10 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meme Generator</title>
-    <link rel="stylesheet" href="./assets/css/meme-generator.css">
+    <link rel="stylesheet" href="meme-generator.css">
     
     <header id="heading">
-        <a href="my-memes.html">My Memes</a><br />
         <h1>Welcome To The World's Best Meme Generator!</h1>
         <nav>
             <a href=""class="links">Home</a>
@@ -20,27 +19,23 @@
 </head>
 
 <body>
-    <form id= form>
     <div class="meme-generator">
-        <form id= form enctype="multipart/form-data">
-        <label for="imageFileInput">Select an Image</label>
+        <label>Select an Image</label>
         <input type="file" id="imageFileInput">
       
-        <label for="topTextInput">Top Text</label>
+        <label>Top Text</label>
         <input type="text" id="topTextInput">
       
-        <label for="bottomTextInput">Bottom Text</label>
+        <label>Bottom Text</label>
         <input type="text" id="bottomTextInput">
 
-        <button id="generateBtn" class="btn">Generate</button>
-
-    </form>
         <canvas id="meme"></canvas>
       </div>
+
+   
       
 
-      <script src="./assets/js/homepage.js"></script>
-      <script src="./assets/js/my-memes.js"></script>
+      <script src="./meme-generator.js"></script>
 </body>
 
 </html>
