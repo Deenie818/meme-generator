@@ -238,7 +238,7 @@ var saveCanvas = function() {
 
     console.log(dataURIArr);
 
-    localStorage.setItem("meme", dataURI);
+    localStorage.setItem("meme", dataURIArr);
 
     // saveImage();
     
