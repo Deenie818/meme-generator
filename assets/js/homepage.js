@@ -221,6 +221,9 @@ var drawText = function() {
 // generateBtn.addEventListener("click", saveMeme);
 
 
+var dataURIArr = [];
+
+
 var saveCanvas = function() {
     // console.log("save canvas")
 
@@ -230,6 +233,10 @@ var saveCanvas = function() {
     // console.log(dataURI);
 
     // abby1.src = dataURI;
+
+    dataURIArr.push(dataURI);
+
+    console.log(dataURIArr);
 
     localStorage.setItem("meme", dataURI);
 
